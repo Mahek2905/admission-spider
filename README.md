@@ -14,9 +14,9 @@
 
 
 ## 🛠️ Tech Stack
-HTML5 – Markup language for structuring the UI
-CSS3 – Styling with custom components and utility classes
-JavaScript (Vanilla) – DOM manipulation and UI logic
+- HTML5 – Markup language for structuring the UI
+- CSS3 – Styling with custom components and utility classes
+- JavaScript (Vanilla) – DOM manipulation and UI logic
 
 
 ## 🚀 Getting Started
