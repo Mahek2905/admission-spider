@@ -55,7 +55,7 @@ header {
     font-weight: 500;
 }
 .home-box i, .announcement-box i, .feedback-box i {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 /* ---------- Main Section ---------- */
@@ -115,6 +115,7 @@ main {
     align-items: center;
 }
 .search-box i {
+    font-size: 1.2rem;
     padding: 1rem;
     color: #a5a8ab;
 }
@@ -142,6 +143,9 @@ main {
     display: flex;
     justify-content: flex-end;
     gap: 0.6rem;
+}
+.nav-container i, .view-btns i {
+    font-size: 1rem;
 }
 .date-range-btn, .filter-btn, .grid-view, .list-view {
     font-size: 0.8rem;
@@ -424,7 +428,7 @@ main {
     border-radius: 0.5rem;
 }
 .announcement i {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: #689df8;
     padding-right: 0.5rem;
 }

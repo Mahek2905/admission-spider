@@ -55,7 +55,7 @@ header {
     font-weight: 500;
 }
 .home-box i, .announcement-box i, .feedback-box i {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 /* ---------- Main Section ---------- */
@@ -115,8 +115,8 @@ form {
 }
 .form-title i {
     color: #3980ed;
-    font-size: 1.2rem;
-    padding-right: 0.5rem;
+    font-size: 1.4rem;
+    padding-right: 0.3rem;
 }
 .form-info {
     color: #64748b;
