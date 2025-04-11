@@ -23,13 +23,14 @@ header {
     padding: 0 9%;
 }
 .logo {
+    text-decoration: none;
     color: #3980ed;
     font-size: 1.3rem;
     font-weight: 700;
 }
 .header-right {
     height: 100%;
-    width: 31.5%;
+    width: 29.5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,14 +47,14 @@ header {
     background-color: #f1f4f9;
     border-radius: 0.5rem;
 }
-header a {
+.header-right a {
     text-decoration: none;
     cursor: pointer;
     color: #3d3e3e; /*#020817*/
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
 }
-.home-box i, .announcement-box i {
+.home-box i, .announcement-box i, .feedback-box i {
     font-size: 0.9rem;
 }
 
@@ -200,6 +201,29 @@ main {
 .activeEvents {
     background-color: #8b5cf6;
     color: white;
+}
+
+/* No Data Found Box*/
+.no-data-box {
+    width: 100%;
+    height: 9rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 0.09rem dashed rgb(209 213 219);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.no-data-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+.no-data-info {
+    font-size: 1rem;
+    color: #6b7280;
 }
 
 /* ---------- Announcement List ---------- */

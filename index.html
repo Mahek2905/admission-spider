@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <div class="logo"><i class="fa-solid fa-spider"></i>  AdmissionSpider</div>
+        <a href="index.html" class="logo"><i class="fa-solid fa-spider"></i>  AdmissionSpider</a>
         <div class="header-right">
             <a href="index.html" class="home-box">
                 <i class="fa-solid fa-house"></i>  Home
@@ -18,7 +18,7 @@
                 <i class="fa-solid fa-bell"></i>  Announcements
             </a>
             <a href="feedback.html" class="feedback-box">
-                <i class="fa-solid fa-comment-dots"></i>  Feedback
+                <i class="fa-solid fa-message"></i>  Feedback
             </a>
         </div>
     </header>
@@ -60,10 +60,10 @@
                             </div>
                             <p>Application Deadlines</p>
                             <div class="section2">
-                                <label><input type="checkbox">Upcoming</label>
-                                <label><input type="checkbox">This Month</label>
-                                <label><input type="checkbox">Next Month</label>
-                                <label><input type="checkbox">Past Deadlines</label>
+                                <label><input type="checkbox" id="upcoming">Upcoming</label>
+                                <label><input type="checkbox" id="thisMonth">This Month</label>
+                                <label><input type="checkbox" id="nextMonth">Next Month</label>
+                                <label><input type="checkbox" id="pastDeadlines">Past Deadlines</label>
                             </div>
                             <div class="buttons">
                                 <button class="clear">Clear All</button>
@@ -90,6 +90,11 @@
                 </div>
             </div>
 
+            <!-- <div class="no-data-box">
+                <p class="no-data-title">No Results Found</p>
+                <p class="no-data-info">Try adjusting your search or filter criteria to find more results.</p>
+            </div> -->
+
             <div class="clg-list"> <!--class="clg-list-flex"-->
                 <div class="clg-box">
                     <div class="clg-layer1">
@@ -99,7 +104,7 @@
                         </div>
                         <div class="layer1-right">Undergraduate</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-10-15</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-10-15</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Maharashtra</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -115,7 +120,7 @@
                         </div>
                         <div class="layer1-right">Diploma</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-05-20</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-05-20</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Kharagpur</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -131,7 +136,7 @@
                         </div>
                         <div class="layer1-right">PhD</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-07-25</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-07-25</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Gujarat</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -147,7 +152,7 @@
                         </div>
                         <div class="layer1-right">Postgraduate</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-10-15</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-10-15</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Manipur</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -163,7 +168,7 @@
                         </div>
                         <div class="layer1-right">Professional</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-04-11</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-04-11</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Vadodara</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -179,7 +184,7 @@
                         </div>
                         <div class="layer1-right">Undergraduate</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-03-10</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-03-10</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Chennai</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -195,7 +200,7 @@
                         </div>
                         <div class="layer1-right">Undergraduate</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-12-15</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-12-15</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Maharashtra</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">
@@ -211,7 +216,7 @@
                         </div>
                         <div class="layer1-right">Undergraduate</div>
                     </div>
-                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: 2025-08-19</div>
+                    <div class="deadline"><i class="fa-solid fa-calendar"></i> Deadline: <p>2025-08-19</p></div>
                     <div class="state"><i class="fa-solid fa-location-dot"></i> Maharashtra</div>
                     <div class="announcement"><i class="fa-solid fa-circle-info"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, voluptates qui</div>
                     <div class="lower-box">

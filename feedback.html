@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css-files/feedback.css" />
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><i class="fa-solid fa-spider"></i>  AdmissionSpider</a>
+        <div class="header-right">
+            <a href="index.html" class="home-box">
+                <i class="fa-solid fa-house"></i>  Home
+            </a>
+            <a href="announcements.html" class="announcement-box">
+                <i class="fa-solid fa-bell"></i>  Announcements
+            </a>
+            <a href="feedback.html" class="feedback-box">
+                <i class="fa-solid fa-message"></i>  Feedback
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="heading">
+                <div class="heading-title">We Value Your Feedback</div>
+                <div class="heading-info">Help us improve AdmissionSpider by sharing your experience and suggestions.</div>
+            </div>
+
+            <form>
+                <div class="layer1">
+                    <div class="form-title"><i class="fa-solid fa-message"></i> Share Your Thoughts</div>
+                    <div class="form-info">Your feedback helps us create a better experience for all users.</div>
+                </div>
+
+                <div class="input-container">
+                    <div class="input1">
+                        <label>Your Name</label>
+                        <div class="userNameBox">
+                            <input type="text" class="userName" placeholder="John Doe">
+                        </div>
+                    </div>
+                    <div class="input2">
+                        <label>Email Address</label>
+                        <div class="userEmailBox">
+                            <input type="email" class="userEmail" placeholder="you@example.com">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rate-container">
+                    <label>Rate Your Experience</label>
+                    <div class="stars-container">
+                        <div class="star" data-value="1"><i class="fa-solid fa-star"></i></div>
+                        <div class="star" data-value="2"><i class="fa-solid fa-star"></i></div>
+                        <div class="star" data-value="3"><i class="fa-solid fa-star"></i></div>
+                        <div class="star" data-value="4"><i class="fa-solid fa-star"></i></div>
+                        <div class="star" data-value="5"><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <div class="form-info">How would you rate your overall experience?</div>
+                </div>
+
+                <div class="msg-container">
+                    <label>Your Feedback</label>
+                    <div class="msg-box">
+                        <textarea placeholder="Please share your thoughts, suggestions, or issues you've encountered..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit"><i class="fa-regular fa-paper-plane"></i>  Submit Feedback</button>
+            </form>
+            <div class="foot">Your feedback is confidential and will only be used to improve our services.</div>
+        </div>
+    </main>
+
+    <script>
+        const stars = document.querySelectorAll(".star");
+        let currentRating = 0;
+
+        stars.forEach((star, index) => {
+            star.addEventListener("click", () => {
+                currentRating = index + 1;
+                updateStars(currentRating);
+            });
+
+            star.addEventListener("mouseout", () => {
+                updateStars(currentRating);
+            });
+        });
+
+        const updateStars = (rating) => {
+            stars.forEach((star, index) => {
+                if(index < rating) {
+                    star.classList.add("selected");
+                } else {
+                    star.classList.remove("selected");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
