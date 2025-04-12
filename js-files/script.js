@@ -183,11 +183,12 @@ function filterList() {
     clgBoxes.forEach((box) => {
         const clgName = box.querySelector(".clg-name").textContent.toLowerCase();
         const clgCourse = box.querySelector(".clg-course").textContent.toLowerCase();
+        const state = box.querySelector(".state p").textContent.toLowerCase();
         const programType = box.querySelector(".layer1-right").textContent.toLowerCase();
         const deadlineStr = box.querySelector(".deadline").textContent.match(/\d{4}-\d{2}-\d{2}/)?.[0];
         const deadline = deadlineStr ? new Date(deadlineStr) : null;
 
-        let matchesSearch = clgName.includes(searchQuery) || clgCourse.includes(searchQuery);
+        let matchesSearch = clgName.includes(searchQuery) || clgCourse.includes(searchQuery) || state.includes(searchQuery);
 
         // Check program type filters
         let matchesProgramFilters = selectedProgramFilters.length === 0 || selectedProgramFilters.includes(programType);
