@@ -10,12 +10,12 @@ const getData = async () => {
         }
         const data = await response.json();
         console.log(data);
-        // updateList(data);
+        updateList(data);
     } catch (error) {
         console.error("Error fetching data: ", error);
     }
 }
-getData();
+// getData();
 
 const updateList = (data) => {
     const announcementList = document.querySelector(".announcement-list");
@@ -29,7 +29,20 @@ const updateList = (data) => {
         announcementLayer1.classList.add("announcement-layer1");
         announcementBox.appendChild(announcementLayer1);
 
-        
+        const announcementTitle = document.createElement("div");
+        announcementTitle.classList.add("announcement-title");
+        announcementTitle.textContent = item.title;
+        announcementBox.appendChild(announcementTitle);
+
+        const announcementDate = document.createElement("div");
+        announcementDate.classList.add("announcement-date");
+        announcementDate.innerHTML = `<i class='bx bx-calendar'></i> Date: ${item.published_date}`;
+        announcementBox.appendChild(announcementDate);
+
+        const announcementInfo = document.createElement("div");
+        announcementInfo.classList.add("announcement-info");
+        announcementInfo.textContent = item.content;
+        announcementBox.appendChild(announcementInfo);
 
         announcementList.appendChild(announcementBox);
     });
@@ -49,7 +62,6 @@ const nav3events = document.querySelector(".nav3-events");
 const degreeLevelBoxes = document.querySelectorAll(".degree-level-box");
 
 // Filter
-const announcementBoxes = document.querySelectorAll(".announcement-boxes");
 const searchBox = document.querySelector(".input-box");
 const nav3btns = document.querySelectorAll(".nav3btns");
 
@@ -109,6 +121,7 @@ const handleNoDataBox = (visibleCount) => {
 // Filter and Display
 const filterBoxes = (tagFilter) => {
     let visibleCount = 0;
+    const announcementBoxes = document.querySelectorAll(".announcement-boxes");
 
     announcementBoxes.forEach((box) => {
         if (tagFilter.toLowerCase() === "all") {
@@ -140,6 +153,7 @@ const filterBoxes = (tagFilter) => {
 const searches = () => {
     let visibleCount = 0;
     const searchQuery = searchBox.value.toLowerCase();
+    const announcementBoxes = document.querySelectorAll(".announcement-boxes");
 
     announcementBoxes.forEach((box) => {
         const announcementTitle = box.querySelector(".announcement-title").textContent.toLowerCase();

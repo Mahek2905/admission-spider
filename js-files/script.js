@@ -10,6 +10,7 @@ const getData = async () => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data);
         updateList(data);
     } catch (error) {
         console.error("Error fetching data: ", error);
@@ -100,7 +101,6 @@ const degreeLevels = document.querySelectorAll(".layer1-right");
 const searchBox = document.querySelector(".input-box");
 const filterApplyBtn = document.querySelector(".apply");
 const filterClearBtn = document.querySelector(".clear");
-const clgBoxes = document.querySelectorAll(".clg-box");
 
 // change color of degree level
 degreeLevels.forEach((level) => {
@@ -158,6 +158,7 @@ const handleNoDataBox = (visibleCount) => {
 
 // Filter college list
 function filterList() {
+    const clgBoxes = document.querySelectorAll(".clg-box");
     const searchQuery = searchBox.value.toLowerCase();
     const selectedProgramFilters = Array.from(filterBox.querySelectorAll(".section1 input[type='checkbox']:checked")).map(
         (checkbox) => checkbox.parentElement.textContent.trim().toLowerCase()
@@ -250,6 +251,7 @@ filterClearBtn.addEventListener("click", () => {
     filterBox.classList.toggle("hidden");
 
     // Show all boxes
+    const clgBoxes = document.querySelectorAll(".clg-box");
     clgBoxes.forEach((box) => {
         box.style.display = "block";
     });

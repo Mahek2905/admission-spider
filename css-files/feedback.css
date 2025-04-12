@@ -14,7 +14,7 @@ body::-webkit-scrollbar {
 /* ---------- Header ---------- */
 header {
     height: 8vh;
-    max-width: 100vw;
+    max-width: 100%;
     background-color: white;
     border-bottom: 1px solid #dadee5;
     display: flex;
@@ -42,6 +42,8 @@ header {
     padding: 0.5rem 1rem;
     align-items: center;
     border: 0.5px solid transparent;
+    display: flex;
+    gap: 0.3rem;
 }
 .home-box:hover, .announcement-box:hover, .feedback-box:hover {
     background-color: #f1f4f9;
@@ -102,6 +104,15 @@ form {
     padding: 1.5rem 1.5rem;
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease-out forwards;
+}
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .layer1 {
@@ -146,9 +157,10 @@ label {
 }
 
 .userNameBox, .userEmailBox {
-    height: 2.3rem;
+    height: 2.8rem;
     width: 98%;
     border-radius: 0.5rem;
+    border: 0.15rem solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -158,7 +170,7 @@ label {
 }
 
 .userName, .userEmail {
-    height: 1.9rem;
+    height: 2.4rem;
     width: 96%;
     border-radius: 0.3rem;
     border: 0.08rem solid rgb(218, 220, 225);
@@ -195,6 +207,7 @@ label {
     background-color: #fffbeb;
     border: 1px solid #facc15;
 }
+
 .star:hover {
     background-color: #f1f4f9 !important;
 }
@@ -220,6 +233,7 @@ textarea {
     min-height: 6.9rem;
     height: relative;
     border-radius: 0.5rem;
+    border: 0.15rem solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -241,7 +255,7 @@ button i {
     padding-right: 0.6rem;
 }
 button:hover {
-    background-color: #2f3033;
+    background-color: #424346;
 }
 
 .foot {
@@ -254,4 +268,119 @@ button:hover {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     padding: 0.9rem 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+/* ---------- Responsive Style Code ---------- */
+@media (max-width: 767px) { /* Mobile (Portrait) */
+    header {
+        max-width: 100%;
+        padding: 0 4%;
+        /* gap: 10%; */
+    }
+    .logo {
+        font-size: 1.2rem;
+    }
+    .header-right {
+        width: 38%;
+        justify-content: flex-end;
+        gap: 5%;
+    }
+    .header-right p {
+        display: none;
+    }
+    .home-box, .announcement-box, .feedback-box {
+        gap: 0;
+        padding: 0.5rem 0.5rem;
+    }
+    .home-box i, .announcement-box i, .feedback-box i {
+        font-size: 1.2rem;
+    }
+    .container {
+        width: 100%;
+        padding: 1rem 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .heading {
+        width: 80%;
+    }
+    form {
+        max-width: 85%;
+    }
+    .input-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    button {
+        width: 99%;
+    }
+    .foot {
+        width: 91.8%;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 1024px) { /* Medium [Tablets and small laptops] */
+    header {
+        max-width: 100%;
+        padding: 0 4%;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .header-right {
+        justify-content: flex-end;
+        gap: 0;
+    }
+    .home-box, .announcement-box, .feedback-box {
+        padding: 0.5rem 0.8rem;
+    }
+    .header-right p {
+        font-size: 0.9rem;
+    }
+    .container {
+        min-width: 95%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .heading {
+        width: 100%;
+    }
+    form {
+        width: 93.5%;
+    }
+    .foot {
+        width: 98%;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) { /* Laptops and Desktops */
+    header {
+        max-width: 100%;
+        padding: 0 4%;
+    }
+    .header-right {
+        justify-content: flex-end;
+        gap: 0;
+    }
+    .header-right p {
+        font-size: 1rem;
+    }
+    .container {
+        min-width: 75%;
+        max-width: 100%;
+    }
+    .heading {
+        width: 100%;
+    }
+    .foot {
+        width: 99%;
+    }
 }
