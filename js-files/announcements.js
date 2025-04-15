@@ -9,13 +9,13 @@ const getData = async () => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         updateList(data);
     } catch (error) {
         console.error("Error fetching data: ", error);
     }
 }
-// getData();
+getData();
 
 const updateList = (data) => {
     const announcementList = document.querySelector(".announcement-list");
@@ -29,6 +29,32 @@ const updateList = (data) => {
         announcementLayer1.classList.add("announcement-layer1");
         announcementBox.appendChild(announcementLayer1);
 
+        if(item.tags !== null) {
+            item.tags.forEach((tag) => {
+                const degreeLevelBox = document.createElement("div");
+                degreeLevelBox.classList.add("degree-level-box");
+                degreeLevelBox.textContent = tag;
+                announcementLayer1.appendChild(degreeLevelBox);
+            });
+        }
+
+        if(item.announcement_type !== null) {
+            const announcementTypeBox = document.createElement("div");
+            announcementTypeBox.classList.add("degree-level-box");
+
+            if(item.announcement_type.includes("admission")) {               
+                announcementTypeBox.textContent = "Admission";    
+            } else if (item.announcement_type.includes("result")) {
+                announcementTypeBox.textContent = "Result";
+            } else if (item.announcement_type === "general") {
+                announcementTypeBox.textContent = "General";
+            } else {
+                announcementTypeBox.textContent = "General";
+            }
+
+            announcementLayer1.appendChild(announcementTypeBox)
+        }    
+            
         const announcementTitle = document.createElement("div");
         announcementTitle.classList.add("announcement-title");
         announcementTitle.textContent = item.title;
@@ -45,49 +71,46 @@ const updateList = (data) => {
         announcementBox.appendChild(announcementInfo);
 
         announcementList.appendChild(announcementBox);
+        changeLevelColor();
     });
 }
 
-// Nav2-Right buttons
-const newBtn = document.querySelector(".new-btn");
-const allBtn = document.querySelector(".all-btn");
-
-// Nav3 buttons
-const nav3all = document.querySelector(".nav3-all");
-const nav3imp = document.querySelector(".nav3-imp");
-const nav3deadline = document.querySelector(".nav3-deadline");
-const nav3events = document.querySelector(".nav3-events");
-
-// Degree level Boxes
-const degreeLevelBoxes = document.querySelectorAll(".degree-level-box");
-
-// Filter
-const searchBox = document.querySelector(".input-box");
-const nav3btns = document.querySelectorAll(".nav3btns");
 
 // Diff colors for diff degree levels
-degreeLevelBoxes.forEach((box) => {
-    const boxVal = box.textContent.toLowerCase();
-    switch (boxVal) {
-        case "important":
-            box.style.backgroundColor = "#ef4444";
-            break;
-        case "new":
-            box.style.backgroundColor = "#3b82f6";
-            break;
-        case "deadline":
-            box.style.backgroundColor = "#f97316";
-            break;
-        case "event":
-            box.style.backgroundColor = "#8b5cf6";
-            break;
-        case "update":
-            box.style.backgroundColor = "#0ea5e9";
-            break;
-        default:
-            break;
-    }
-});
+const changeLevelColor = () => {
+    document.querySelectorAll(".degree-level-box").forEach((box) => {
+        const boxVal = box.textContent.toLowerCase();
+        switch (boxVal) {
+            case "important":
+                box.style.backgroundColor = "#ef4444";
+                break;
+            case "new":
+                box.style.backgroundColor = "#3b82f6";
+                break;
+            case "deadline":
+                box.style.backgroundColor = "#f97316";
+                break;
+            case "event":
+                box.style.backgroundColor = "#8b5cf6";
+                break;
+            case "update":
+                box.style.backgroundColor = "#0ea5e9";
+                break;
+            case "general":
+                box.style.backgroundColor = "#10b981";
+                break;
+            case "admission":
+                box.style.backgroundColor = "#ec4899";
+                break;
+            case "result":
+                box.style.backgroundColor = "#f59e0b";
+                break;
+            default:
+                box.style.backgroundColor = "#10b981";
+                break;
+        }
+    });
+}
 
 const handleNoDataBox = (visibleCount) => {
     let noDataBox = document.querySelector(".no-data-box");
@@ -152,7 +175,7 @@ const filterBoxes = (tagFilter) => {
 // Search Box
 const searches = () => {
     let visibleCount = 0;
-    const searchQuery = searchBox.value.toLowerCase();
+    const searchQuery = document.querySelector(".input-box").value.toLowerCase();
     const announcementBoxes = document.querySelectorAll(".announcement-boxes");
 
     announcementBoxes.forEach((box) => {
@@ -175,49 +198,47 @@ const searches = () => {
 // ----- Event Listeners -----
 
 // Nav3 buttons
-nav3all.addEventListener("click", () => {
-    nav3all.classList.add("activeAll");
-    nav3imp.classList.remove("activeImp");
-    nav3deadline.classList.remove("activeDeadline");
-    nav3events.classList.remove("activeEvents");
-    filterBoxes("all");
-});
-nav3imp.addEventListener("click", () => {
-    nav3imp.classList.add("activeImp");
-    nav3all.classList.remove("activeAll");
-    nav3deadline.classList.remove("activeDeadline");
-    nav3events.classList.remove("activeEvents");
-    filterBoxes("Important");
-});
-nav3deadline.addEventListener("click", () => {
-    nav3deadline.classList.add("activeDeadline");
-    nav3all.classList.remove("activeAll");
-    nav3imp.classList.remove("activeImp");
-    nav3events.classList.remove("activeEvents");
-    filterBoxes("Deadline");
-});
-nav3events.addEventListener("click", () => {
-    nav3events.classList.add("activeEvents");
-    nav3all.classList.remove("activeAll");
-    nav3imp.classList.remove("activeImp");
-    nav3deadline.classList.remove("activeDeadline");
-    filterBoxes("Event");
-});
+document.querySelectorAll(".nav3btns").forEach((btn) => {
+    btn.addEventListener("click", () => {
+
+        document.querySelectorAll(".nav3btns").forEach((b) => {
+            b.classList.remove("activeAll", "activeImp", "activeDeadline", "activeEvents", "activeGeneral", "activeAdmission", "activeResult");
+
+            if(btn.classList.contains("nav3-all")) {
+                btn.classList.add("activeAll");
+            } else if (btn.classList.contains("nav3-imp")) {
+                btn.classList.add("activeImp");
+            } else if (btn.classList.contains("nav3-deadline")) {
+                btn.classList.add("activeDeadline");
+            } else if (btn.classList.contains("nav3-events")) {
+                btn.classList.add("activeEvents");
+            } else if (btn.classList.contains("nav3-general")) {
+                btn.classList.add("activeGeneral");
+            } else if (btn.classList.contains("nav3-admission")) {
+                btn.classList.add("activeAdmission");
+            } else if (btn.classList.contains("nav3-result")) {
+                btn.classList.add("activeResult");
+            }
+
+            filterBoxes(btn.dataset.type);
+        });
+    })
+})
 
 
 // New & All buttons
-newBtn.addEventListener("click", () => {
-    allBtn.classList.remove("active-all");
-    newBtn.style.backgroundColor = "#3980ed";
-    newBtn.style.color = "#ffffff";
+document.querySelector(".new-btn").addEventListener("click", () => {
+    document.querySelector(".all-btn").classList.remove("active-all");
+    document.querySelector(".new-btn").style.backgroundColor = "#3980ed";
+    document.querySelector(".new-btn").style.color = "#ffffff";
     filterBoxes("New");
 });
-allBtn.addEventListener("click", () => {
-    allBtn.classList.add("active-all");
-    newBtn.style.backgroundColor = "#ffffff";
-    newBtn.style.color = "#020817";
+document.querySelector(".all-btn").addEventListener("click", () => {
+    document.querySelector(".all-btn").classList.add("active-all");
+    document.querySelector(".new-btn").style.backgroundColor = "#ffffff";
+    document.querySelector(".new-btn").style.color = "#020817";
     filterBoxes("All");
 });
-searchBox.addEventListener("input", () => {
+document.querySelector(".input-box").addEventListener("input", () => {
     searches();
 });

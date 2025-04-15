@@ -323,10 +323,12 @@ main {
 
 /* ---------- Boxes ---------- */
 .clg-list {
+    max-width: 100%;
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns:  repeat(3, 1fr); minmax(33%, 38.8%) */
+    grid-template-columns: repeat(3, 32.5%);
     grid-auto-flow: row;
     grid-gap: 1.2rem;
 }
@@ -339,6 +341,7 @@ main {
 }
 
 .clg-box {
+    width: auto;
     height: auto;
     background-color: white;
     border: 0.08rem solid rgb(209 213 219);
@@ -376,7 +379,7 @@ main {
     gap: 0.8rem;
 }
 .img-box {
-    height: 1.6rem;
+    height: 1.6rem; /*1.6rem*/
     width: 1.6rem;
     padding: 0.5rem;
     background-color: #e1f2fd;
@@ -432,6 +435,8 @@ main {
     background-color: #f9fafb;
     border: 0.08rem solid rgb(209 213 219);
     border-radius: 0.5rem;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 .announcement i {
     font-size: 0.9rem;
@@ -489,9 +494,12 @@ main {
     .home-box i, .announcement-box i, .feedback-box i {
         font-size: 1.2rem;
     }
+    main {
+        padding: 1rem 1rem;
+    }
     .container {
         width: 100%;
-        padding: 1rem 1rem;
+        padding: 0;
     }
     .nav2 {
         height: auto;
@@ -530,7 +538,8 @@ main {
     .clg-list, .clg-list-flex {
         width: 100%;
         display: flex;
-        flex-direction: column;align-items: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: 1rem;
     }
     .clg-box {
@@ -556,9 +565,13 @@ main {
     .header-right p {
         font-size: 0.9rem;
     }
+    main {
+        padding: 2rem 1rem;
+    }
     .container {
         min-width: 95%;
         max-width: 100%;
+        padding: 0;
     }
     .heading {
         width: 100%;
@@ -585,7 +598,7 @@ main {
         max-width: 100%;
     }
     .clg-list {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 48.5%);
     }
 }
 

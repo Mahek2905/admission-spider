@@ -1,6 +1,6 @@
 const baseURL = "https://sgh-api.onrender.com/api/announcements/admission-dates";
 const clgBody = document.querySelector(".clg-list");
-const container = document.querySelector(".container");
+// const container = document.querySelector(".container");
 
 // Fetch Data
 const getData = async () => {
@@ -10,13 +10,13 @@ const getData = async () => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         updateList(data);
     } catch (error) {
         console.error("Error fetching data: ", error);
     }
 }
-// getData();
+getData();
 
 const updateList = (data) => {
     clgBody.innerHTML = '';
@@ -57,7 +57,7 @@ const updateList = (data) => {
 
             const state = document.createElement("div");
             state.classList.add("state");
-            state.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="1rem" viewBox="0 -960 960 960" width="1rem" fill="#4b5563"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg> ${item.state.name}`;
+            state.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="1rem" viewBox="0 -960 960 960" width="1rem" fill="#4b5563"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg> <p>${item.state.name}</p>`;
             clgBox.appendChild(state);
 
             const announcement = document.createElement("div");
@@ -71,61 +71,48 @@ const updateList = (data) => {
 
             const clgWebsite = document.createElement("button");
             clgWebsite.classList.add("clg-website");
+            clgWebsite.innerHTML = `Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
             clgWebsite.addEventListener("click", () => {
                 window.open(item.url);
             });
             lowerBox.appendChild(clgWebsite);
 
             clgBody.appendChild(clgBox);
+            changeLevelColor();
         });
         
     });
 }
 
-// Filter
-const filterBtn = document.querySelector(".filter-btn");
-const filterBox = document.querySelector(".filter-box");
-
-// Date Range
-const dateRangeBtn = document.querySelector(".date-range-btn");
-const dateRangeBox = document.querySelector(".date-range-box");
-
-// View Boxes
-const gridViewBtn = document.querySelector(".grid-view");
-const listViewBtn = document.querySelector(".list-view");
-
-// Degree level -> change the color of the box
-const degreeLevels = document.querySelectorAll(".layer1-right");
-
-// Filtering the data
-const searchBox = document.querySelector(".input-box");
-const filterApplyBtn = document.querySelector(".apply");
-const filterClearBtn = document.querySelector(".clear");
-
 // change color of degree level
-degreeLevels.forEach((level) => {
-    const levelVal = level.textContent.toLowerCase();
-    
-    switch (levelVal) {
-        case "undergraduate":
-            level.style.backgroundColor = "#3b82f6";
-            break;
-        case "postgraduate":
-            level.style.backgroundColor = "#0ea5e9";
-            break;
-        case "phd":
-            level.style.backgroundColor = "#8b5cf6";
-            break;
-        case "professional":
-            level.style.backgroundColor = "#38bdf8";
-            break;
-        case "diploma":
-            level.style.backgroundColor = "#6366f1";
-            break;
-        default:
-            break;
-    }
-});
+const changeLevelColor = () => {
+    document.querySelectorAll(".layer1-right").forEach((level) => {
+        const levelVal = level.textContent.toLowerCase();
+        
+        switch (levelVal) {
+            case "undergraduate":
+                level.style.backgroundColor = "#3b82f6";
+                break;
+            case "postgraduate":
+                level.style.backgroundColor = "#0ea5e9";
+                break;
+            case "phd":
+                level.style.backgroundColor = "#8b5cf6";
+                break;
+            case "professional":
+                level.style.backgroundColor = "#38bdf8";
+                break;
+            case "diploma":
+                level.style.backgroundColor = "#6366f1";
+                break;
+            case "doctorate":
+                level.style.backgroundColor = "#4586c3";
+                break;
+            default:
+                break;
+        }
+    });
+}
 
 const handleNoDataBox = (visibleCount) => {
     let noDataBox = document.querySelector(".no-data-box");
@@ -146,7 +133,7 @@ const handleNoDataBox = (visibleCount) => {
             noDataInfo.textContent = `Try adjusting your search or filter criteria to find more results.`;
             noDataBox.appendChild(noDataInfo);
 
-            container.appendChild(noDataBox);
+            document.querySelector(".container").appendChild(noDataBox);
         }
     } else {
         // Remove the "No Data Found" box if it exists and there are visible boxes
@@ -159,7 +146,8 @@ const handleNoDataBox = (visibleCount) => {
 // Filter college list
 function filterList() {
     const clgBoxes = document.querySelectorAll(".clg-box");
-    const searchQuery = searchBox.value.toLowerCase();
+    const filterBox = document.querySelector(".filter-box");
+    const searchQuery = document.querySelector(".input-box").value.toLowerCase();
     const selectedProgramFilters = Array.from(filterBox.querySelectorAll(".section1 input[type='checkbox']:checked")).map(
         (checkbox) => checkbox.parentElement.textContent.trim().toLowerCase()
     );
@@ -230,23 +218,24 @@ function filterList() {
 }
 
 // Event Listeners
-searchBox.addEventListener("input", () => {
+document.querySelector(".input-box").addEventListener("input", () => {
     filterList();
 });
 
-filterBtn.addEventListener("click", () => {
-    filterBox.classList.toggle("hidden");
-    dateRangeBox.classList.add("hidden");
+document.querySelector(".filter-btn").addEventListener("click", () => {
+    document.querySelector(".filter-box").classList.toggle("hidden");
+    document.querySelector(".date-range-box").classList.add("hidden");
 });
 
-filterApplyBtn.addEventListener("click", () => {
+document.querySelector(".apply").addEventListener("click", () => {
     filterList();
-    filterBox.classList.add("hidden");
+    document.querySelector(".filter-box").classList.add("hidden");
 });
 
-filterClearBtn.addEventListener("click", () => {
+document.querySelector(".clear").addEventListener("click", () => {
+    const filterBox = document.querySelector(".filter-box");
     filterBox.querySelectorAll("input[type='checkbox']").forEach((checkbox) => (checkbox.checked = false));
-    searchBox.value = "";
+    document.querySelector(".input-box").value = "";
     document.querySelector("#from-date").value = "";
     document.querySelector("#to-date").value = "";
     filterBox.classList.toggle("hidden");
@@ -258,35 +247,38 @@ filterClearBtn.addEventListener("click", () => {
     });
 });
 
-dateRangeBtn.addEventListener("click", () => {
-    dateRangeBox.classList.toggle("hidden");
-    filterBox.classList.add("hidden");
+document.querySelector(".date-range-btn").addEventListener("click", () => {
+    document.querySelector(".date-range-box").classList.toggle("hidden");
+    document.querySelector(".filter-box").classList.add("hidden");
 });
 
 document.querySelector(".apply-date-btn").addEventListener("click", () => {
     filterList();
-    dateRangeBox.classList.add("hidden");
+    document.querySelector(".date-range-box").classList.add("hidden");
 });
 
-gridViewBtn.addEventListener("click", () => {
+document.querySelector(".grid-view").addEventListener("click", () => {
     clgBody.classList.remove("clg-list-flex");
     clgBody.classList.add("clg-list");
-    listViewBtn.classList.remove("active");
-    gridViewBtn.classList.add("active");
+    document.querySelector(".list-view").classList.remove("active");
+    document.querySelector(".grid-view").classList.add("active");
 });
 
-listViewBtn.addEventListener("click", () => {
+document.querySelector(".list-view").addEventListener("click", () => {
     clgBody.classList.remove("clg-list");
     clgBody.classList.add("clg-list-flex");
-    listViewBtn.classList.add("active");
-    gridViewBtn.classList.remove("active");
+    document.querySelector(".list-view").classList.add("active");
+    document.querySelector(".grid-view").classList.remove("active");
 });
 
 document.addEventListener("click", (e) => {
-    if (!filterBox.contains(e.target) && !filterBtn.contains(e.target)) {
+    const filterBox = document.querySelector(".filter-box");
+    if (!filterBox.contains(e.target) && !document.querySelector(".filter-btn").contains(e.target)) {
       filterBox.classList.add("hidden");
     }
-    if(!dateRangeBox.contains(e.target) && !dateRangeBtn.contains(e.target)) {
+
+    const dateRangeBox = document.querySelector(".date-range-box");
+    if(!dateRangeBox.contains(e.target) && !document.querySelector(".date-range-btn").contains(e.target)) {
         dateRangeBox.classList.add("hidden");
     }
 });
