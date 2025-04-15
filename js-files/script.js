@@ -52,7 +52,11 @@ const updateList = (data) => {
 
             const deadline = document.createElement("div");
             deadline.classList.add("deadline");
-            deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline}</p>`;
+            if(item.application_deadline === null) {
+                deadline.style.display = "none";
+            } else {
+                deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline}</p>`;
+            }
             clgBox.appendChild(deadline);
 
             const state = document.createElement("div");

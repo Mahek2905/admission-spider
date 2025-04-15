@@ -53,7 +53,23 @@ const updateList = (data) => {
             }
 
             announcementLayer1.appendChild(announcementTypeBox)
-        }    
+        } 
+        
+        if (item.published_date !== null) {
+            const publishedDateStr = item.published_date;
+            const today = new Date();
+            const publishedDate = publishedDateStr ? new Date(publishedDateStr) : null;
+
+            const diffTime = Math.abs(today - publishedDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays <= 7) {
+                const newTag = document.createElement("div");
+                newTag.classList.add("degree-level-box");
+                newTag.textContent = "New";
+                announcementLayer1.appendChild(newTag);
+            }
+        }
             
         const announcementTitle = document.createElement("div");
         announcementTitle.classList.add("announcement-title");
@@ -62,7 +78,13 @@ const updateList = (data) => {
 
         const announcementDate = document.createElement("div");
         announcementDate.classList.add("announcement-date");
-        announcementDate.innerHTML = `<i class='bx bx-calendar'></i> Date: ${item.published_date}`;
+        if(item.published_date !== null) {
+            announcementDate.innerHTML = `<i class='bx bx-calendar'></i> Published Date: ${item.published_date}`;
+        } else if (item.application_deadline !== null) {
+            announcementDate.innerHTML = `<i class='bx bx-calendar'></i> Application Deadline: ${item.application_deadline}`;
+        } else {
+            announcementDate.style.display = "none";
+        }
         announcementBox.appendChild(announcementDate);
 
         const announcementInfo = document.createElement("div");
