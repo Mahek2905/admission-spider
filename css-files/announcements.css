@@ -280,6 +280,7 @@ main {
     font-size: 0.8rem;
     color: #faf8fc;
     font-weight: 500;
+    background-color: #8b5cf6;
 }
 .degree-level-box:hover {
     background-color: #3f4457 !important;
