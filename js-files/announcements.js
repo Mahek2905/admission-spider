@@ -29,15 +29,6 @@ const updateList = (data) => {
         announcementLayer1.classList.add("announcement-layer1");
         announcementBox.appendChild(announcementLayer1);
 
-        if(item.tags !== null) {
-            item.tags.forEach((tag) => {
-                const degreeLevelBox = document.createElement("div");
-                degreeLevelBox.classList.add("degree-level-box");
-                degreeLevelBox.textContent = tag;
-                announcementLayer1.appendChild(degreeLevelBox);
-            });
-        }
-
         if(item.announcement_type !== null) {
             const announcementTypeBox = document.createElement("div");
             announcementTypeBox.classList.add("degree-level-box");
@@ -45,15 +36,33 @@ const updateList = (data) => {
             if(item.announcement_type.includes("admission")) {               
                 announcementTypeBox.textContent = "Admission";    
             } else if (item.announcement_type.includes("result")) {
-                announcementTypeBox.textContent = "Result";
+                announcementTypeBox.textContent = "Results";
             } else if (item.announcement_type === "general") {
                 announcementTypeBox.textContent = "General";
+            } else if (item.announcement_type.includes("exam")) {
+                announcementTypeBox.textContent = "Exam";
             } else {
-                announcementTypeBox.textContent = "General";
+                announcementTypeBox.style.display = "none";
             }
 
+            item.tags.forEach((tag) => {
+                if (announcementTypeBox.textContent.includes(tag.name)) {
+                    announcementTypeBox.style.display = "none";
+                }
+            })
+
             announcementLayer1.appendChild(announcementTypeBox)
-        } 
+        }
+
+        if(item.tags !== null) {
+            item.tags.forEach((tag) => {
+                const degreeLevelBox = document.createElement("div");
+                degreeLevelBox.classList.add("degree-level-box");
+                degreeLevelBox.textContent = tag.name;
+                announcementLayer1.appendChild(degreeLevelBox);
+            });
+        }
+ 
         
         if (item.published_date !== null) {
             const publishedDateStr = item.published_date;
@@ -63,7 +72,7 @@ const updateList = (data) => {
             const diffTime = Math.abs(today - publishedDate);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-            if (diffDays <= 7) {
+            if (diffDays <= 14) {
                 const newTag = document.createElement("div");
                 newTag.classList.add("degree-level-box");
                 newTag.textContent = "New";
@@ -86,6 +95,15 @@ const updateList = (data) => {
             announcementDate.style.display = "none";
         }
         announcementBox.appendChild(announcementDate);
+
+        item.tags.forEach((tag) => {
+            if(tag.name === "Deadline" && (announcementDate.innerHTML.includes("Published Date:") || announcementDate.style.display == "none")) {
+                const deadlineDate = document.createElement("div");
+                deadlineDate.classList.add("announcement-date");
+                deadlineDate.innerHTML = `<i class='bx bx-calendar'></i> Application Deadline: ${item.application_deadline}`;
+                announcementBox.appendChild(deadlineDate);
+            }
+        })
 
         const announcementInfo = document.createElement("div");
         announcementInfo.classList.add("announcement-info");
@@ -116,7 +134,7 @@ const changeLevelColor = () => {
                 box.style.backgroundColor = "#8b5cf6";
                 break;
             case "update":
-                box.style.backgroundColor = "#0ea5e9";
+                box.style.backgroundColor = "#d946ef";
                 break;
             case "general":
                 box.style.backgroundColor = "#10b981";
@@ -124,8 +142,23 @@ const changeLevelColor = () => {
             case "admission":
                 box.style.backgroundColor = "#ec4899";
                 break;
-            case "result":
+            case "results":
                 box.style.backgroundColor = "#f59e0b";
+                break;
+            case "registration":
+                box.style.backgroundColor = "rgb(31, 119, 108)";
+                break;
+            case "international":
+                box.style.backgroundColor = "#64748b";
+                break;
+            case "exam":
+                box.style.backgroundColor = "#84cc16";
+                break;
+            case "undergraduate":
+                box.style.backgroundColor = "#38bdf8";
+                break;
+            case "postgraduate":
+                box.style.backgroundColor = "#4f46e5";
                 break;
             default:
                 box.style.backgroundColor = "#10b981";
@@ -224,7 +257,7 @@ document.querySelectorAll(".nav3btns").forEach((btn) => {
     btn.addEventListener("click", () => {
 
         document.querySelectorAll(".nav3btns").forEach((b) => {
-            b.classList.remove("activeAll", "activeImp", "activeDeadline", "activeEvents", "activeGeneral", "activeAdmission", "activeResult");
+            b.classList.remove("activeAll", "activeImp", "activeDeadline", "activeEvents", "activeGeneral", "activeAdmission", "activeResult", "activeUpdate", "activeRegistration", "activeInternational", "activeExam", "activeUndergraduate", "activePostgraduate");
 
             if(btn.classList.contains("nav3-all")) {
                 btn.classList.add("activeAll");
@@ -240,6 +273,18 @@ document.querySelectorAll(".nav3btns").forEach((btn) => {
                 btn.classList.add("activeAdmission");
             } else if (btn.classList.contains("nav3-result")) {
                 btn.classList.add("activeResult");
+            } else if (btn.classList.contains("nav3-update")) {
+                btn.classList.add("activeUpdate");
+            } else if (btn.classList.contains("nav3-registration")) {
+                btn.classList.add("activeRegistration");
+            } else if (btn.classList.contains("nav3-international")) {
+                btn.classList.add("activeInternational");
+            } else if (btn.classList.contains("nav3-exam")) {
+                btn.classList.add("activeExam");
+            } else if (btn.classList.contains("nav3-undergraduate")) {
+                btn.classList.add("activeUndergraduate");
+            } else if (btn.classList.contains("nav3-postgraduate")) {
+                btn.classList.add("activePostgraduate");
             }
 
             filterBoxes(btn.dataset.type);
