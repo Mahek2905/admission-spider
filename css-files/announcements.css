@@ -425,6 +425,9 @@ main {
     .announcement-boxes, .no-data-box {
         width: 90%;
     }
+    .view-details {
+        margin: 0.8rem 0;
+    }
 }
 
 @media (min-width: 767px) and (max-width: 1024px) { /* Medium [Tablets and small laptops] */
