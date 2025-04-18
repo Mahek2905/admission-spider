@@ -33,7 +33,7 @@ const updateList = (data) => {
 
             const imgBox = card.querySelector(".img-box");
             imgBox.style.color = getDegreeColor(program.degree_level);
-            imgBox.style.background = "#fef";
+            imgBox.style.background = "#e1f2fd";
 
             const clgName = card.querySelector(".clg-name");
             clgName.textContent = item.institution.name;
