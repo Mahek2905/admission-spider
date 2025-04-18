@@ -12,6 +12,7 @@ const getData = async () => {
         // console.log(data);
         updateList(data);
     } catch (error) {
+        document.querySelector("main").innerHTML = `<p>Failed to load announcements...Please try again later.</p>`;
         console.error("Error fetching data: ", error);
     }
 }
@@ -110,6 +111,13 @@ const updateList = (data) => {
         announcementInfo.textContent = item.content;
         announcementBox.appendChild(announcementInfo);
 
+        const viewDetails = document.createElement("a");
+        viewDetails.classList.add("view-details");
+        viewDetails.innerHTML = `View Details <i class="fa-solid fa-arrow-right"></i>`;
+        const announcementId = item.announcement_id;
+        viewDetails.href = `details.html?announcementId=${announcementId}`;
+        announcementBox.appendChild(viewDetails);
+
         announcementList.appendChild(announcementBox);
         changeLevelColor();
     });
@@ -166,6 +174,7 @@ const changeLevelColor = () => {
         }
     });
 }
+// changeLevelColor();
 
 const handleNoDataBox = (visibleCount) => {
     let noDataBox = document.querySelector(".no-data-box");

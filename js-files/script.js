@@ -13,6 +13,7 @@ const getData = async () => {
         // console.log(data);
         updateList(data);
     } catch (error) {
+        document.querySelector("main").innerHTML = `<p>Failed to load Data...Please try again later.</p>`;
         console.error("Error fetching data: ", error);
     }
 }
@@ -66,12 +67,45 @@ const updateList = (data) => {
 
             const announcement = document.createElement("div");
             announcement.classList.add("announcement");
-            announcement.innerHTML = `<i class='bx bx-info-circle' ></i> ${item.content}`;
             clgBox.appendChild(announcement);
+
+            const announcementText = document.createElement("p");
+            announcementText.classList.add("announcement-text");
+            announcementText.id = "ann-text";
+            announcementText.innerHTML = `<i class='bx bx-info-circle' ></i> ${item.content}`;
+            announcement.appendChild(announcementText);
+
+            // const readMore = document.createElement("button");
+            // readMore.classList.add("readMore");
+            // readMore.innerHTML = `Read More <i class='bx bx-chevron-down'></i>`;
+            // announcement.appendChild(readMore);
+
+            // readMore.addEventListener("click", () => {
+            //     announcementText.classList.toggle("expanded");
+
+            //     if (announcementText.classList.contains("expanded")) {
+            //         readMore.innerHTML = `Show Less <i class='bx bx-chevron-up'></i>`;
+            //         announcementText.style.webkitLineClamp = "unset";
+            //     } else {
+            //         readMore.innerHTML = `Read More <i class='bx bx-chevron-down'></i>`;
+            //         announcementText.style.webkitLineClamp = "2";
+            //     }
+            // });
 
             const lowerBox = document.createElement("div");
             lowerBox.classList.add("lower-box");
             clgBox.appendChild(lowerBox);
+
+            const viewDetails = document.createElement("button");
+            viewDetails.classList.add("viewDetails");
+            viewDetails.innerHTML = `<i class='bx bx-file'></i> View Details`;
+            lowerBox.appendChild(viewDetails);
+
+            viewDetails.addEventListener("click", ()=> {
+                const announcementId = item.announcement_id;
+
+                window.location.href = `details.html?announcementId=${announcementId}`;
+            });
 
             const clgWebsite = document.createElement("button");
             clgWebsite.classList.add("clg-website");
@@ -117,6 +151,7 @@ const changeLevelColor = () => {
         }
     });
 }
+// changeLevelColor();
 
 const handleNoDataBox = (visibleCount) => {
     let noDataBox = document.querySelector(".no-data-box");

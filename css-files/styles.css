@@ -7,9 +7,9 @@
 body {
     max-width: 100vw;
 }
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     display: none;
-}
+} */
 
 /* ---------- Header ---------- */
 header {
@@ -428,13 +428,23 @@ main {
 
 .announcement {
     width: 95%;
-    height: auto;
+    /* height: auto; */
     padding: 0.5rem;
     color: #374151;
     font-size: 0.8rem;
     background-color: #f9fafb;
     border: 0.08rem solid rgb(209 213 219);
     border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.announcement-text {
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
     overflow-wrap: break-word;
     white-space: normal;
 }
@@ -443,16 +453,58 @@ main {
     color: #689df8;
     padding-right: 0.5rem;
 }
+.readMore {
+    width: 100%;
+    height: 2rem;
+    margin-top: 0.8rem;
+    background: none;
+    border: none;
+    border-radius: 0.5rem;
+    color: #4184f5;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.readMore i {
+    font-size: 1.5rem;
+}
+.readMore:hover {
+    background-color: #f1f5f9;
+    cursor: pointer;
+}
+.expanded {
+    line-clamp: unset;
+    -webkit-line-clamp: unset;
+    max-height: 10rem;
+}
 
 .lower-box {
     width: 100%;
     border-top: 0.01rem solid rgb(235, 237, 240);
     margin-top: 0.5rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
-.lower-box button {
+.viewDetails {
+    margin: 1rem 0;
+    height: 2.5rem;
+    width: 7rem;
+    color: #3b82f6;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: white;
+    border: none;
+    border-radius: 0.5rem;
+}
+.viewDetails:hover {
+    background-color: #f1f5f9;
+    color: #020817;
+    cursor: pointer;
+}
+
+.clg-website {
     margin: 1rem 0;
     height: 2.5rem;
     width: 7rem;
@@ -463,7 +515,7 @@ main {
     border: 0.09rem solid #3b82f6;
     border-radius: 0.5rem;
 }
-.lower-box button:hover {
+.clg-website:hover {
     background-color: #e0f2fe;
     color: #020817;
     cursor: pointer;
@@ -516,11 +568,14 @@ main {
     .nav-container {
         justify-content: space-between;
     }
-    .grid-view i::before, .list-view i::before {
+    /* .grid-view i::before, .list-view i::before {
         font-size: 1.1rem;
     }
     .grid-view, .list-view {
         padding: 0 1rem;
+    } */
+    .view-btns {
+        display: none;
     }
     .date-range-btn, .filter-btn {
         font-size: 0.8rem;
