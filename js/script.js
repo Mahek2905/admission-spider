@@ -33,7 +33,7 @@ const updateList = (data) => {
 
             const imgBox = card.querySelector(".img-box");
             imgBox.style.color = getDegreeColor(program.degree_level);
-            imgBox.style.background = "#e1f2fd";
+            imgBox.style.background = "#f1f5f9";
 
             const clgName = card.querySelector(".clg-name");
             clgName.textContent = item.institution.name;
@@ -49,7 +49,18 @@ const updateList = (data) => {
             if (item.application_deadline === null) {
                 deadline.style.display = "none";
             } else {
-                deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline}</p>`;
+                const deadlineDateStr = item.application_deadline;
+                const today = new Date();
+                const deadlineDate = deadlineDateStr ? new Date(deadlineDateStr) : null;
+                const diffTime = Math.abs(deadlineDate - today);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if(diffDays <= 7) {
+                    deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline} (Urgent)</p>`;
+                    deadline.style.color = "#dc2626";
+                    deadline.style.fontWeight = "500";
+                } else {
+                    deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline}</p>`;
+                }
             }
 
             const state = card.querySelector(".state p");
@@ -84,17 +95,17 @@ const updateList = (data) => {
 const getDegreeColor = (degree) => {
     switch (degree.toLowerCase()) {
         case "undergraduate":
-            return "#0f766e";
+            return " #f4a261";
         case "postgraduate":
-            return "#0e7490";
+            return " #70d6a7";
         case "professional":
-            return "#be185d";
+            return " #f4acb7";
         case "diploma":
-            return "#dc2626";
+            return " #ea6b66";
         case "doctorate":
-            return "#4338ca";
+            return " #ae7ccf";
         default:
-            return "#000";
+            return " #000";
     }
 }
 
@@ -214,6 +225,12 @@ document.querySelector(".filter-btn").addEventListener("click", () => {
 document.querySelector(".apply").addEventListener("click", () => {
     filterList();
     document.querySelector(".filter-box").classList.add("hidden");
+});
+
+document.querySelectorAll(".checkboxes").forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+        filterList();
+    });
 });
 
 document.querySelector(".clear").addEventListener("click", () => {

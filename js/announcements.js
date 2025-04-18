@@ -73,7 +73,7 @@ const updateList = (data) => {
             const diffTime = Math.abs(today - publishedDate);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-            if (diffDays <= 14) {
+            if (diffDays <= 15) {
                 const newTag = document.createElement("div");
                 newTag.classList.add("degree-level-box");
                 newTag.textContent = "New";
@@ -130,46 +130,46 @@ const changeLevelColor = () => {
         const boxVal = box.textContent.toLowerCase();
         switch (boxVal) {
             case "important":
-                box.style.backgroundColor = "#ef4444";
+                box.style.backgroundColor = " #ef4444";
                 break;
             case "new":
-                box.style.backgroundColor = "#3b82f6";
+                box.style.backgroundColor = " #3b82f6";
                 break;
             case "deadline":
-                box.style.backgroundColor = "#f97316";
+                box.style.backgroundColor = " #f97316";
                 break;
             case "event":
-                box.style.backgroundColor = "#8b5cf6";
+                box.style.backgroundColor = " #8b5cf6";
                 break;
             case "update":
-                box.style.backgroundColor = "#d946ef";
+                box.style.backgroundColor = " #d946ef";
                 break;
             case "general":
-                box.style.backgroundColor = "#10b981";
+                box.style.backgroundColor = " #10b981";
                 break;
             case "admission":
-                box.style.backgroundColor = "#ec4899";
+                box.style.backgroundColor = " #ec4899";
                 break;
             case "results":
-                box.style.backgroundColor = "#f59e0b";
+                box.style.backgroundColor = " #f59e0b";
                 break;
             case "registration":
                 box.style.backgroundColor = "rgb(31, 119, 108)";
                 break;
             case "international":
-                box.style.backgroundColor = "#64748b";
+                box.style.backgroundColor = " #64748b";
                 break;
             case "exam":
-                box.style.backgroundColor = "#84cc16";
+                box.style.backgroundColor = " #84cc16";
                 break;
             case "undergraduate":
-                box.style.backgroundColor = "#38bdf8";
+                box.style.backgroundColor = " #38bdf8";
                 break;
             case "postgraduate":
-                box.style.backgroundColor = "#4f46e5";
+                box.style.backgroundColor = " #4f46e5";
                 break;
             default:
-                box.style.backgroundColor = "#10b981";
+                box.style.backgroundColor = " #10b981";
                 break;
         }
     });

@@ -66,20 +66,21 @@
                         <div class="filter-box hidden">
                             <p>Program Type</p>
                             <div class="section1">
-                                <label><input type="checkbox">Undergraduate</label>
-                                <label><input type="checkbox">Postgraduate</label>
-                                <label><input type="checkbox">Professional</label>
-                                <label><input type="checkbox">Diploma</label>
-                                <label><input type="checkbox">Doctorate</label>
+                                <label><input type="checkbox" class="checkboxes">Undergraduate</label>
+                                <label><input type="checkbox" class="checkboxes">Postgraduate</label>
+                                <label><input type="checkbox" class="checkboxes">Professional</label>
+                                <label><input type="checkbox" class="checkboxes">Diploma</label>
+                                <label><input type="checkbox" class="checkboxes">PhD</label>
+                                <label><input type="checkbox" class="checkboxes">Doctorate</label>
                                 <!-- <label><input type="checkbox"> Postgraduate Diploma</label>
                                 <label><input type="checkbox"> Post-Doctoral Research</label> -->
                             </div>
                             <p>Application Deadlines</p>
                             <div class="section2">
-                                <label><input type="checkbox" id="upcoming">Upcoming</label>
-                                <label><input type="checkbox" id="thisMonth">This Month</label>
-                                <label><input type="checkbox" id="nextMonth">Next Month</label>
-                                <label><input type="checkbox" id="pastDeadlines">Past Deadlines</label>
+                                <label><input type="checkbox" id="upcoming" class="checkboxes">Upcoming</label>
+                                <label><input type="checkbox" id="thisMonth" class="checkboxes">This Month</label>
+                                <label><input type="checkbox" id="nextMonth" class="checkboxes">Next Month</label>
+                                <label><input type="checkbox" id="pastDeadlines" class="checkboxes">Past Deadlines</label>
                             </div>
                             <div class="buttons">
                                 <button class="clear">Clear All</button>
@@ -291,5 +292,25 @@
 
     <script src="./js/script.js"></script>
 </body>
+
+<!-- else {
+    const deadlineDateStr = item.application_deadline;
+    const today = new Date();
+    const deadlineDate = deadlineDateStr ? new Date(deadlineDateStr) : null;
+    const diffTime = Math.abs(deadlineDate - today);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if(diffDays <= 7) {
+        deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline} (Urgent)</p>`;
+        deadline.style.color = "#dc2626";
+        deadline.style.fontWeight = "500";
+    } else {
+        deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline}</p>`;
+    } -->
+
+    <!-- document.querySelectorAll(".checkboxes").forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+            filterList();
+        });
+    }); -->
 
 </html>
