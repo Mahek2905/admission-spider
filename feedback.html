@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./css-files/feedback.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/feedback.css" />
 </head>
+
 <body>
     <header>
-        <a href="index.html" class="logo"><i class="fa-solid fa-spider"></i>  AdmissionSpider</a>
+        <a href="index.html" class="logo"><i class="fa-solid fa-spider"></i> AdmissionSpider</a>
         <div class="header-right">
             <a href="index.html" class="home-box">
-                <i class='bx bx-home-alt'></i><p>Home</p>
+                <i class='bx bx-home-alt'></i>
+                <p>Home</p>
             </a>
             <a href="announcements.html" class="announcement-box">
-                <i class='bx bx-bell'></i><p>Announcements</p>
+                <i class='bx bx-bell'></i>
+                <p>Announcements</p>
             </a>
             <a href="feedback.html" class="feedback-box">
-                <i class='bx bx-comment'></i><p>Feedback</p>
+                <i class='bx bx-comment'></i>
+                <p>Feedback</p>
             </a>
         </div>
     </header>
@@ -28,7 +37,8 @@
         <div class="container">
             <div class="heading">
                 <div class="heading-title">We Value Your Feedback</div>
-                <div class="heading-info">Help us improve AdmissionSpider by sharing your experience and suggestions.</div>
+                <div class="heading-info">Help us improve AdmissionSpider by sharing your experience and suggestions.
+                </div>
             </div>
 
             <form>
@@ -67,13 +77,14 @@
                 <div class="msg-container">
                     <label>Your Feedback</label>
                     <div class="msg-box">
-                        <textarea placeholder="Please share your thoughts, suggestions, or issues you've encountered..."></textarea>
+                        <textarea
+                            placeholder="Please share your thoughts, suggestions, or issues you've encountered..."></textarea>
                     </div>
                 </div>
 
-                <button type="submit"><i class="fa-regular fa-paper-plane"></i>  Submit Feedback</button>
+                <button type="submit"><i class="fa-regular fa-paper-plane"></i> Submit Feedback</button>
             </form>
-            
+
             <div class="foot">Your feedback is confidential and will only be used to improve our services.</div>
         </div>
     </main>
@@ -95,7 +106,7 @@
 
         const updateStars = (rating) => {
             stars.forEach((star, index) => {
-                if(index < rating) {
+                if (index < rating) {
                     star.classList.add("selected");
                 } else {
                     star.classList.remove("selected");
@@ -104,4 +115,5 @@
         }
     </script>
 </body>
+
 </html>
