@@ -99,17 +99,17 @@ const updateList = (data) => {
 const getDegreeColor = (degree) => {
     switch (degree.toLowerCase()) {
         case "undergraduate":
-            return " #f4a261";
+            return " #059669"; //9b5cb2
         case "postgraduate":
-            return " #70d6a7";
+            return " #8d51ff"; //d45875
         case "professional":
-            return " #f4acb7";
+            return " #f6339b"; //4aa79c
         case "diploma":
-            return " #ea6b66";
+            return "rgb(2, 174, 193)"; //d16aa7
         case "doctorate":
-            return " #ae7ccf";
+            return " #2b7efe"; //4fb97d
         default:
-            return " #000";
+            return " #cc5c83"; //
     }
 }
 

@@ -271,6 +271,7 @@ main {
     grid-template-columns: repeat(2, 49.3%);
     grid-auto-flow: row;
     grid-gap: 1.2rem;
+    margin-top: 1.5rem;
 }
 .clg-list-flex {
     width: 100%;
@@ -278,6 +279,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    margin-top: 1.5rem;
 }
 
 .clg-box {
