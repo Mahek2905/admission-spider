@@ -17,7 +17,7 @@ main {
     width: 100%;
     margin-bottom: 0.5rem;
     font-size: 1.9rem;
-    color: #3b82f6;
+    color: #003ffe;
     font-weight: 700;
     text-align: center;
 }
@@ -63,7 +63,7 @@ form {
     font-weight: 500;
 }
 .form-title i {
-    color: #3980ed;
+    color: #003ffe;
     font-size: 1.4rem;
     padding-right: 0.3rem;
 }
@@ -103,17 +103,21 @@ label {
     justify-content: center;
     align-items: center;
 }
-.userNameBox:focus-within, .userEmailBox:focus-within {
+/* .userNameBox:focus-within, .userEmailBox:focus-within {
     border: 0.15rem solid black;
-}
+} */
 
 .userName, .userEmail {
     height: 2.4rem;
-    width: 96%;
+    width: 100%;
     border-radius: 0.3rem;
     border: 0.08rem solid rgb(218, 220, 225);
     padding-left: 0.5rem;
     outline: none;
+}
+.userName:focus, .userEmail:focus {
+    box-shadow: 0 0 0 2px #4184f5;
+    border-color: #4184f5;
 }
 
 .rate-container {
@@ -158,7 +162,7 @@ label {
 }
 textarea {
     min-height: 6rem;
-    width: 98.3%;
+    width: 100%;
     background-color: white;
     border-radius: 0.3rem;
     border: 0.08rem solid rgb(218, 220, 225);
@@ -176,8 +180,9 @@ textarea {
     justify-content: center;
     align-items: center;
 }
-.msg-box:focus-within {
-    border: 0.15rem solid black;
+textarea:focus-within {
+    box-shadow: 0 0 0 2px #4184f5;
+    border-color: #4184f5; /* border: 0.15rem solid black; */
 }
 
 button {
@@ -247,7 +252,7 @@ button:hover {
     .heading {
         width: 80%;
     }
-    form {
+    form, .foot {
         max-width: 85%;
     }
     .input-container {
@@ -256,9 +261,6 @@ button:hover {
     }
     button {
         width: 99%;
-    }
-    .foot {
-        width: 91.8%;
     }
 }
 
@@ -291,11 +293,8 @@ button:hover {
     .heading {
         width: 100%;
     }
-    form {
+    form, .foot {
         width: 93.5%;
-    }
-    .foot {
-        width: 98%;
     }
 }
 
@@ -319,6 +318,6 @@ button:hover {
         width: 100%;
     }
     .foot {
-        width: 99%;
+        width: 96%;
     }
 }

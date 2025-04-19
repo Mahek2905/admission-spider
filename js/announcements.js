@@ -12,7 +12,8 @@ const getData = async () => {
         // console.log(data);
         updateList(data);
     } catch (error) {
-        document.querySelector("main").innerHTML = `<p>Failed to load announcements...Please try again later.</p>`;
+        document.querySelector("main").innerHTML = `<p id="loading-failed">Failed to load announcements...Please try again later.</p>`;
+        document.querySelector("#loading-failed").style.marginTop = "5rem";
         console.error("Error fetching data: ", error);
     }
 }

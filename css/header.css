@@ -10,7 +10,7 @@ header {
 }
 .logo {
   text-decoration: none;
-  color: #3980ed;
+  color: #003ffe; /*0066ff*/
   font-size: 1.3rem;
   font-weight: 700;
 }
@@ -34,13 +34,15 @@ header {
 .home-box:hover, .announcement-box:hover, .feedback-box:hover {
   background-color: #f1f4f9;
   border-radius: 0.5rem;
+  /* background-color: rgb(124, 124, 124); */
 }
 .header-right a {
   text-decoration: none;
   cursor: pointer;
-  color: #3d3e3e; /*#020817*/
+  color: #3d3e3e; /* #020817 */
   font-size: 0.9rem;
   font-weight: 500;
+  /* color: white; */
 }
 .home-box i, .announcement-box i, .feedback-box i {
   font-size: 1rem;

@@ -13,7 +13,8 @@ const getData = async () => {
         // console.log(data);
         updateList(data);
     } catch (error) {
-        document.querySelector("main").innerHTML = `<p>Failed to load Data...Please try again later.</p>`;
+        document.querySelector("main").innerHTML = `<p id="loading-failed">Failed to load Data...Please try again later.</p>`;
+        document.querySelector("#loading-failed").style.marginTop = "5rem";
         console.error("Error fetching data: ", error);
     }
 }
@@ -52,13 +53,16 @@ const updateList = (data) => {
                 const deadlineDateStr = item.application_deadline;
                 const today = new Date();
                 const deadlineDate = deadlineDateStr ? new Date(deadlineDateStr) : null;
-                const diffTime = Math.abs(deadlineDate - today);
+                const diffTime = deadlineDate - today;
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                if(diffDays <= 7) {
+                if(diffDays > 0 && diffDays <= 15) {
                     deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline} (Urgent)</p>`;
                     deadline.style.color = "#dc2626";
                     deadline.style.fontWeight = "500";
-                } else {
+                } else if (diffDays < 0) {
+                    deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline} (Past Deadline)</p>`;
+                }
+                 else {
                     deadline.innerHTML = `<i class='bx bx-calendar' ></i> Deadline: <p>${item.application_deadline}</p>`;
                 }
             }
