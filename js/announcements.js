@@ -1,4 +1,4 @@
-const baseURL = "https://sgh-api.onrender.com/api/announcements";
+const baseURL = "https://sgh-api.onrender.com/api/announcements?randomize=true&limit=50";
 const container = document.querySelector(".container");
 
 // Fetch Data
@@ -169,6 +169,12 @@ const changeLevelColor = () => {
             case "postgraduate":
                 box.style.backgroundColor = " #4f46e5";
                 break;
+            case "payment":
+                box.style.backgroundColor = " #C266A2";
+                break;
+            case "scholarship":
+            box.style.backgroundColor = " #01afb9";
+            break;
             default:
                 box.style.backgroundColor = " #10b981";
                 break;
@@ -267,7 +273,7 @@ document.querySelectorAll(".nav3btns").forEach((btn) => {
     btn.addEventListener("click", () => {
 
         document.querySelectorAll(".nav3btns").forEach((b) => {
-            b.classList.remove("activeAll", "activeImp", "activeDeadline", "activeEvents", "activeGeneral", "activeAdmission", "activeResult", "activeUpdate", "activeRegistration", "activeInternational", "activeExam", "activeUndergraduate", "activePostgraduate");
+            b.classList.remove("activeAll", "activeImp", "activeDeadline", "activeEvents", "activeGeneral", "activeAdmission", "activeResult", "activeUpdate", "activeRegistration", "activeInternational", "activeExam", "activeUndergraduate", "activePostgraduate", "activePayment", "activeScholarship");
 
             if(btn.classList.contains("nav3-all")) {
                 btn.classList.add("activeAll");
@@ -295,6 +301,10 @@ document.querySelectorAll(".nav3btns").forEach((btn) => {
                 btn.classList.add("activeUndergraduate");
             } else if (btn.classList.contains("nav3-postgraduate")) {
                 btn.classList.add("activePostgraduate");
+            } else if (btn.classList.contains("nav3-payment")) {
+                btn.classList.add("activePayment");
+            } else if (btn.classList.contains("nav3-scholarship")) {
+                btn.classList.add("activeScholarship");
             }
 
             filterBoxes(btn.dataset.type);

@@ -191,6 +191,14 @@ main {
     background-color: #4f46e5;
     color: white;
 }
+.activePayment {
+    background-color: #C266A2;
+    color: white;
+}
+.activeScholarship {
+    background-color: #01afb9;
+    color: white;
+}
 
 /* No Data Found Box*/
 .no-data-box {
