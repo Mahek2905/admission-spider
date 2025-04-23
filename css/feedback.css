@@ -188,7 +188,7 @@ textarea:focus-within {
 }
 
 button {
-    background-color: #0f172a;
+    background-color: #3b82f6; /*0f172a*/
     color: #faf8fc;
     font-weight: 500;
     border-radius: 0.4rem;
@@ -200,7 +200,7 @@ button i {
     padding-right: 0.6rem;
 }
 button:hover {
-    background-color: #424346;
+    background-color: #4e8ff7; /*424346*/
 }
 
 .foot {
@@ -252,10 +252,10 @@ button:hover {
         flex-direction: column;
     }
     .heading {
-        width: 80%;
+        width: 85%;
     }
     form, .foot {
-        max-width: 85%;
+        max-width: 95%;
     }
     .input-container {
         flex-direction: column;

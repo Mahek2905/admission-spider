@@ -24,22 +24,23 @@ main {
 /* ---------- Upper Box ---------- */
 .upper-box {
     width: 100%;
+    margin-top: 0.8rem;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 1rem;
 }
 
 .upper-box1, .upper-box2 {
     width: 65%;
-    height: 100%;
+    min-height: 100%;
     background-color: white;
     border: 0.08rem solid rgb(209 213 219);
     border-radius: 0.5rem;
     padding: 1rem 1.2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 1rem;
 }
@@ -87,30 +88,31 @@ main {
     height: auto;
     font-size: 0.8rem;
     font-weight: 500;
-    background-color: #f3f4f6;
-    color: #020817;
-    padding: 0.3rem 0.5rem;
-    border: 0.08rem solid rgb(209 213 219);
+    /* background-color: #f3f4f6; */
+    color: white;
+    padding: 0.3rem 0.7rem;
+    /* border: 0.08rem solid rgb(209 213 219); */
     border-radius: 1rem;
 }
 
 .clg-announcement-website {
     width: 100%;
     height: 2.5rem;
-    margin-top: 0.7rem;
+    margin-top: 1rem;
     background-color: white;
-    border: 0.08rem solid rgb(209 213 219);
+    border: 0.08rem solid #3b82f6; /*rgb(209 213 219)*/
     border-radius: 0.5rem;
-    color: #020817;
+    color: #3b82f6; /*white*/
     font-size: 0.9rem;
     font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.3rem;
 }
 .clg-announcement-website:hover {
     background-color: #f1f5f9;
-    color: #0f172a;
+    /* color: #020817; white */
     cursor: pointer;
 }
 
@@ -141,6 +143,7 @@ main {
 /* ---------- Lower Box ---------- */
 .lower-box {
     width: 100%;
+    margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -185,7 +188,7 @@ main {
     }
 }
 .clg-box:hover {
-    box-shadow: 1.5px 0.8px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
 }
 
 .program-name {
@@ -200,8 +203,9 @@ main {
     background: none;
     font-size: 0.8rem;
     font-weight: 500;
-    padding: 0.3rem 0.5rem;
-    border: 0.08rem solid rgb(209 213 219);
+    padding: 0.3rem 0.7rem;
+    color: white;
+    /* border: 0.08rem solid rgb(209 213 219); */
     border-radius: 1rem;
 }
 .program-info {
@@ -253,7 +257,7 @@ main {
         flex-direction: column;
     }
     .upper-box1, .upper-box2 {
-        width: 90%;
+        width: 98%;
     }
     .tags-container {
         flex-wrap: wrap;
@@ -263,6 +267,9 @@ main {
     }
     .programs-container {
         grid-template-columns: repeat(1, 100%);
+    }
+    .lower-box {
+        margin-top: 1.5rem;
     }
 }
 

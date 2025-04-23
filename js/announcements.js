@@ -1,4 +1,4 @@
-const baseURL = "https://sgh-api.onrender.com/api/announcements?randomize=true&limit=50";
+const baseURL = "https://sgh-api.onrender.com/api/announcements?randomize=true&limit=100";
 const container = document.querySelector(".container");
 
 // Fetch Data
@@ -173,8 +173,8 @@ const changeLevelColor = () => {
                 box.style.backgroundColor = " #C266A2";
                 break;
             case "scholarship":
-            box.style.backgroundColor = " #01afb9";
-            break;
+                box.style.backgroundColor = " #01afb9";
+                break;
             default:
                 box.style.backgroundColor = " #10b981";
                 break;

@@ -439,7 +439,7 @@ main {
 .view-details {
     height: 2.5rem;
     width: 7rem;
-    color: #3b82f6;
+    /* color: #3b82f6; */
     font-size: 0.8rem;
     font-weight: 500;
     background-color: white;
@@ -448,7 +448,7 @@ main {
 }
 .view-details:hover {
     background-color: #f1f5f9;
-    color: #020817;
+    /* color: #020817; */
     cursor: pointer;
 }
 
@@ -459,13 +459,30 @@ main {
     font-size: 0.8rem;
     font-weight: 500;
     background-color: white;
-    border: 0.09rem solid #3b82f6;
+    border: 0.09rem solid transparent;
     border-radius: 0.5rem;
+    outline: none;
 }
 .clg-website:hover {
     background-color: #f1f5f9;
-    color: #020817;
+    /* color: #020817; */
     cursor: pointer;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 0.8rem;
+    right: 0.8rem;
+    z-index: 100;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    background-color: white;
+    border: 0.08rem solid rgb(209 213 219);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    outline: none;
+    display: none;
 }
 
 /* ---------- Responsive Style Code ---------- */

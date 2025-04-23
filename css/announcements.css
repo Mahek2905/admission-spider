@@ -257,7 +257,7 @@ main {
     }
 }
 .announcement-boxes:hover {
-    box-shadow: 1.5px 0.8px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
 }
 
 .announcement-layer1 {
@@ -309,6 +309,9 @@ main {
     height: auto;
     text-decoration: none;
     color: #3980ed;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
 }
 .view-details:hover {
     color: #042f6f;

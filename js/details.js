@@ -72,6 +72,7 @@ const displayDetails = (data) => {
         const tagName = document.createElement("div");
         tagName.classList.add("tags");
         tagName.textContent = tag.name;
+        tagName.style.backgroundColor = getTagsColor(tag.name);
         tagsContainer.appendChild(tagName);
     });
 
@@ -194,6 +195,7 @@ const displayDetails = (data) => {
             const degreeLevel = document.createElement("div");
             degreeLevel.classList.add("degree-level");
             degreeLevel.textContent = program.degree_level;
+            degreeLevel.style.backgroundColor = getDegreeColor(program.degree_level);
             clgBox.appendChild(degreeLevel);
 
             const programInfo = document.createElement("div");
@@ -207,5 +209,56 @@ const displayDetails = (data) => {
             clgBox.appendChild(durationMonths);
         });
     }
-    
-;}
+}
+
+const getTagsColor = (value) => {
+    switch (value.toLowerCase()) {
+        case "important":
+            return " #ef4444";
+        case "deadline":
+            return " #f97316";
+        case "event":
+            return " #8b5cf6";
+        case "update":
+            return " #d946ef";
+        case "general":
+            return " #10b981";
+        case "admission":
+            return " #ec4899";
+        case "results":
+            return " #f59e0b";
+        case "registration":
+            return "rgb(31, 119, 108)";
+        case "international":
+            return " #64748b";
+        case "exam":
+            return " #84cc16";
+        case "undergraduate":
+            return " #38bdf8";
+        case "postgraduate":
+            return " #4f46e5";
+        case "payment":
+            return " #C266A2";
+        case "scholarship":
+            return " #01afb9";
+        default:
+            break;
+    }
+}
+
+const getDegreeColor = (value) => {
+    switch (value.toLowerCase()) {
+        case "undergraduate":
+            return " #059669"; //9b5cb2
+        case "postgraduate":
+            return " #8d51ff"; //d45875
+        case "professional":
+            return " #f6339b"; //4aa79c
+        case "diploma":
+            return "rgb(2, 174, 193)"; //d16aa7
+        case "doctorate":
+            return " #2b7efe"; //4fb97d
+        default:
+            return " #cc5c83";
+    }
+}

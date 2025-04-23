@@ -109,7 +109,7 @@ const getDegreeColor = (degree) => {
         case "doctorate":
             return " #2b7efe"; //4fb97d
         default:
-            return " #cc5c83"; //
+            return " #cc5c83";
     }
 }
 
@@ -286,4 +286,19 @@ document.addEventListener("click", (e) => {
     if (!dateRangeBox.contains(e.target) && !document.querySelector(".date-range-btn").contains(e.target)) {
         dateRangeBox.classList.add("hidden");
     }
+});
+window.addEventListener("scroll", () => {
+    const backToTop = document.querySelector("#back-to-top");
+    
+    if(window.scrollY > 400) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
+});
+document.querySelector("#back-to-top").addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
