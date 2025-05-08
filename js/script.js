@@ -1,4 +1,4 @@
-const baseURL = "https://sgh-api.onrender.com/api/announcements/admission-dates?randomize=true&limit=50";
+const baseURL = "https://sgh-api.onrender.com/api/announcements/admission-dates?randomize=true";
 const clgBody = document.querySelector(".clg-list");
 // const container = document.querySelector(".container");
 
