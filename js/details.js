@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const announcementId = urlParams.get('announcementId');
 
-const baseURL = "https://sgh-api.onrender.com/api/announcements";
+const baseURL = "https://admission-scraper-api.vercel.app/api/announcements";
 
 const fetchData = async () => {
     try {

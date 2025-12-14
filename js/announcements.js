@@ -1,4 +1,4 @@
-const baseURL = "https://sgh-api.onrender.com/api/announcements?randomize=true&limit=100";
+const baseURL = "https://admission-scraper-api.vercel.app/api/announcements?randomize=true&limit=100";
 const container = document.querySelector(".container");
 
 // Fetch Data
