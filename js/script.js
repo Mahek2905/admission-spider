@@ -1,4 +1,4 @@
-const baseURL = "https://admission-scraper-api.vercel.app/api/announcements/admission-dates?randomize=true";
+const baseURL = "https://admission-scraper-webapp.fly.dev/api/announcements/admission-dates?randomize=true";
 const clgBody = document.querySelector(".clg-list");
 // const container = document.querySelector(".container");
 
@@ -11,7 +11,7 @@ const getData = async () => {
         }
         const data = await response.json();
         // console.log(data);
-        updateList(data);
+        updateList(data.items);
     } catch (error) {
         document.querySelector("main").innerHTML = `<p id="loading-failed">Failed to load Data...Please try again later.</p>`;
         document.querySelector("#loading-failed").style.marginTop = "5rem";

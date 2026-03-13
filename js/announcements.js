@@ -1,4 +1,4 @@
-const baseURL = "https://admission-scraper-api.vercel.app/api/announcements?randomize=true&limit=100";
+const baseURL = "https://admission-scraper-webapp.fly.dev/api/announcements?randomize=true&limit=100";
 const container = document.querySelector(".container");
 
 // Fetch Data
@@ -10,7 +10,7 @@ const getData = async () => {
         }
         const data = await response.json();
         // console.log(data);
-        updateList(data);
+        updateList(data.items);
     } catch (error) {
         document.querySelector("main").innerHTML = `<p id="loading-failed">Failed to load announcements...Please try again later.</p>`;
         document.querySelector("#loading-failed").style.marginTop = "5rem";
